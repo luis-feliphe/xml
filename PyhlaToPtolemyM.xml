@@ -58,7 +58,7 @@ Sending data to  HLA (BBB)</text></svg></configure>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-700.0, -80.0]">
         </property>
     </property>
-    <property name="MasterHLADEDirector" class="ptolemy.myactors.Simple.domain.MasterHLADEDirector">
+    <property name="MasterHLADEDirector" class="ptolemy.myactors.hlabbb.domain.MasterHLADEDirector">
         <property name="federateName" class="ptolemy.data.expr.StringParameter" value="PtolemyMasterFederate">
         </property>
         <property name="federateFile" class="ptolemy.data.expr.StringParameter" value="PyhlaToPtolemy.fed">
@@ -70,7 +70,7 @@ Sending data to  HLA (BBB)</text></svg></configure>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-660.0, -115.0]">
         </property>
     </property>
-    <entity name="MasterFederateActor" class="ptolemy.myactors.Simple.MasterFederateActor">
+    <entity name="MasterFederateActor" class="ptolemy.myactors.hlabbb.MasterFederateActor">
 <display name="HLA BBB "/>        <doc>HLA Actor.</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-77.6633186340332, 183.7649154663086]">
         </property>
