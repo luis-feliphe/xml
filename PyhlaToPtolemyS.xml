@@ -8,22 +8,22 @@
     </property>
     <property name="feedbackGain" class="ptolemy.data.expr.Parameter" value="-20.0">
     </property>
-    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1025, 681]">
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1111, 653]">
     </property>
     <property name="_vergilLocation" class="ptolemy.actor.gui.LocationAttribute" value="[102, 100]">
     </property>
-    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={48, -4, 1233, 805}, maximized=true}">
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={49, 24, 1317, 744}, maximized=true}">
     </property>
-    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.9121569653368">
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.9121569653369">
     </property>
-    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{-363.1955236486507, 28.5025337837835}">
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{-389.3131313131312, -58.5549242424244}">
     </property>
     <property name="annotation2" class="ptolemy.kernel.util.Attribute">
         <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
         </property>
         <property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
             <configure><svg><text x="20" y="20" style="font-size:32; font-family:Serif; fill:black">Slave
-Receive data from HLA (BBB)</text></svg></configure>
+</text></svg></configure>
         </property>
         <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
             <configure>
@@ -36,7 +36,7 @@ Receive data from HLA (BBB)</text></svg></configure>
         </property>
         <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-670.0, -270.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-645.0, -230.0]">
         </property>
     </property>
     <property name="timeWindow" class="ptolemy.data.expr.Parameter" value="1">
@@ -55,10 +55,10 @@ Receive data from HLA (BBB)</text></svg></configure>
         </property>
         <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-660.0, -110.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-620.0, -100.0]">
         </property>
     </property>
-    <property name="SlaveHLADEDirector" class="ptolemy.myactors.Simple.domain.SlaveHLADEDirector">
+    <property name="SlaveHLADEDirector" class="ptolemy.myactors.hlabbb.domain.SlaveHLADEDirector">
         <property name="federateName" class="ptolemy.data.expr.StringParameter" value="PtolemySlaveFederate">
         </property>
         <property name="federateFile" class="ptolemy.data.expr.StringParameter" value="PyhlaToPtolemy.fed">
@@ -67,12 +67,12 @@ Receive data from HLA (BBB)</text></svg></configure>
         </property>
         <property name="stopWhenQueueIsEmpty" class="ptolemy.data.expr.Parameter" value="true">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-620.0, -145.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-570.0, -145.0]">
         </property>
     </property>
-    <entity name="SlaveFederateActor" class="ptolemy.myactors.Simple.SlaveFederateActor">
+    <entity name="SlaveFederateActor" class="ptolemy.myactors.hlabbb.SlaveFederateActor">
 <display name="HLA BBB "/>        <doc>HLA Actor.</doc>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="{-505.0, 100.0}">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-384.33836364746094, -39.68229675292969]">
         </property>
         <property name="_icon" class="ptolemy.vergil.icon.EditorIcon">
             <property name="rectangle" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
@@ -127,9 +127,10 @@ Receive data from HLA (BBB)</text></svg></configure>
             <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
             </property>
         </port>
-        <port name="gps" class="ptolemy.actor.TypedIOPort">
+        <port name="position" class="ptolemy.actor.TypedIOPort">
             <property name="output"/>
-            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            <property name="multiport"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
             </property>
         </port>
         <port name="compass" class="ptolemy.actor.TypedIOPort">
@@ -152,32 +153,74 @@ Receive data from HLA (BBB)</text></svg></configure>
             <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
             </property>
         </port>
+        <port name="gps" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+        </port>
+    </entity>
+    <entity name="Const" class="ptolemy.actor.lib.Const">
+        <doc>Create a constant sequence.</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-525.0, -10.0]">
+        </property>
     </entity>
     <entity name="Clock" class="ptolemy.actor.lib.Clock">
         <property name="period" class="ptolemy.actor.parameters.PortParameter" value="2.0">
         </property>
         <doc>Create periodic timed events.</doc>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-670.0, 100.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-595.0, -10.0]">
         </property>
     </entity>
-    <entity name="Display9" class="ptolemy.actor.lib.gui.Display">
-<display name="GPS"/>        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={681, 213, 328, 242}, maximized=false}">
+    <entity name="Slave1" class="ptolemy.actor.lib.gui.Display">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute">
         </property>
-        <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[326, 186]">
+        <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-355.0, 110.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-185.0, -95.0]">
+        </property>
+    </entity>
+    <entity name="Slave2" class="ptolemy.actor.lib.gui.Display">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute">
+        </property>
+        <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{-190.0, -35.0}">
         </property>
     </entity>
     <relation name="relation2" class="ptolemy.actor.TypedIORelation">
         <property name="width" class="ptolemy.data.expr.Parameter" value="1">
         </property>
+        <vertex name="vertex1" value="[-460.0, -10.0]">
+        </vertex>
     </relation>
     <relation name="relation" class="ptolemy.actor.TypedIORelation">
         <property name="width" class="ptolemy.data.expr.Parameter" value="1">
         </property>
     </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
     <link port="SlaveFederateActor.signal" relation="relation2"/>
-    <link port="SlaveFederateActor.gps" relation="relation"/>
-    <link port="Clock.output" relation="relation2"/>
-    <link port="Display9.input" relation="relation"/>
+    <link port="SlaveFederateActor.position" relation="relation4"/>
+    <link port="SlaveFederateActor.position" relation="relation3"/>
+    <link port="SlaveFederateActor.inCompass" relation="relation2"/>
+    <link port="SlaveFederateActor.inGoto" relation="relation2"/>
+    <link port="SlaveFederateActor.inRotate" relation="relation2"/>
+    <link port="SlaveFederateActor.inActivate" relation="relation2"/>
+    <link port="Const.output" relation="relation2"/>
+    <link port="Const.trigger" relation="relation"/>
+    <link port="Clock.output" relation="relation"/>
+    <link port="Slave1.input" relation="relation4"/>
+    <link port="Slave2.input" relation="relation3"/>
 </entity>

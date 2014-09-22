@@ -8,22 +8,21 @@
     </property>
     <property name="feedbackGain" class="ptolemy.data.expr.Parameter" value="-20.0">
     </property>
-    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1025, 681]">
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1111, 653]">
     </property>
     <property name="_vergilLocation" class="ptolemy.actor.gui.LocationAttribute" value="[102, 100]">
     </property>
-    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={48, -4, 1233, 805}, maximized=true}">
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={49, 24, 1317, 744}, maximized=true}">
     </property>
     <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.6441047192957">
     </property>
-    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{-324.8877744932433, 122.429054054054}">
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{86.5624999999997, 122.0329861111108}">
     </property>
     <property name="annotation2" class="ptolemy.kernel.util.Attribute">
         <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
         </property>
         <property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
-            <configure><svg><text x="20" y="20" style="font-size:32; font-family:Serif; fill:black">Master
-Sending data to  HLA (BBB)</text></svg></configure>
+            <configure><svg><text x="20" y="20" style="font-size:32; font-family:Serif; fill:black">Master</text></svg></configure>
         </property>
         <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
             <configure>
@@ -36,7 +35,7 @@ Sending data to  HLA (BBB)</text></svg></configure>
         </property>
         <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-695.0, -295.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-595.0, -230.0]">
         </property>
     </property>
     <property name="timeWindow" class="ptolemy.data.expr.Parameter" value="1">
@@ -72,7 +71,7 @@ Sending data to  HLA (BBB)</text></svg></configure>
     </property>
     <entity name="MasterFederateActor" class="ptolemy.myactors.hlabbb.MasterFederateActor">
 <display name="HLA BBB "/>        <doc>HLA Actor.</doc>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-77.6633186340332, 183.7649154663086]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-315.0, 20.0]">
         </property>
         <property name="_icon" class="ptolemy.vergil.icon.EditorIcon">
             <property name="rectangle" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
@@ -108,27 +107,27 @@ Sending data to  HLA (BBB)</text></svg></configure>
         <property name="period" class="ptolemy.actor.parameters.PortParameter" value="2.0">
         </property>
         <doc>Create periodic timed events.</doc>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-665.0, 55.0]">
-        </property>
-    </entity>
-    <entity name="Display" class="ptolemy.actor.lib.gui.Display">
-        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={375, 308, 524, 238}, maximized=false}">
-        </property>
-        <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[522, 182]">
-        </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="{-160, 45}">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-665.0, 25.0]">
         </property>
     </entity>
     <entity name="CompositeActor" class="ptolemy.actor.TypedCompositeActor">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-430.0, 60.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-510.0, -30.0]">
         </property>
         <property name="DE Director" class="ptolemy.domains.de.kernel.DEDirector">
-            <property name="_location" class="ptolemy.kernel.util.Location" value="{120, 65}">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[555.0, 75.0]">
             </property>
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={49, -4, 1317, 772}, maximized=true}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1111, 653]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.7833075194552">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{1205.17230615426, 331.1777534484863}">
         </property>
         <port name="port" class="ptolemy.actor.TypedIOPort">
             <property name="input"/>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[210.0, 315.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[645.0, 325.0]">
             </property>
         </port>
         <port name="port2" class="ptolemy.actor.TypedIOPort">
@@ -136,27 +135,12 @@ Sending data to  HLA (BBB)</text></svg></configure>
             <property name="_location" class="ptolemy.kernel.util.Location" value="[1270.0, 385.0]">
             </property>
         </port>
-        <entity name="StringConst" class="ptolemy.actor.lib.StringConst">
-            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;5;0&gt;">
-            </property>
-            <doc>Create a constant sequence with a string value.</doc>
-            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
-                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
-                </property>
-                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="80">
-                </property>
-                <property name="displayHeight" class="ptolemy.data.expr.Parameter" value="10">
-                </property>
-            </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[830.0, 320.0]">
-            </property>
-        </entity>
         <entity name="Commutator" class="ptolemy.actor.lib.Commutator">
             <property name="_location" class="ptolemy.kernel.util.Location" value="[1155.0, 345.0]">
             </property>
         </entity>
         <entity name="StringConst12" class="ptolemy.actor.lib.StringConst">
-            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;0&gt;">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;-2;-2&gt;">
             </property>
             <doc>Create a constant sequence with a string value.</doc>
             <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
@@ -171,7 +155,7 @@ Sending data to  HLA (BBB)</text></svg></configure>
             </property>
         </entity>
         <entity name="StringConst13" class="ptolemy.actor.lib.StringConst">
-            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;0&gt;">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;1&gt;">
             </property>
             <doc>Create a constant sequence with a string value.</doc>
             <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
@@ -201,7 +185,7 @@ Sending data to  HLA (BBB)</text></svg></configure>
             </property>
         </entity>
         <entity name="StringConst15" class="ptolemy.actor.lib.StringConst">
-            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;0&gt;">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;1;0&gt;">
             </property>
             <doc>Create a constant sequence with a string value.</doc>
             <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
@@ -216,7 +200,7 @@ Sending data to  HLA (BBB)</text></svg></configure>
             </property>
         </entity>
         <entity name="StringConst16" class="ptolemy.actor.lib.StringConst">
-            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;0&gt;">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;-2&gt;">
             </property>
             <doc>Create a constant sequence with a string value.</doc>
             <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
@@ -231,7 +215,7 @@ Sending data to  HLA (BBB)</text></svg></configure>
             </property>
         </entity>
         <entity name="StringConst17" class="ptolemy.actor.lib.StringConst">
-            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;0&gt;">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;-1;0&gt;">
             </property>
             <doc>Create a constant sequence with a string value.</doc>
             <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
@@ -246,7 +230,7 @@ Sending data to  HLA (BBB)</text></svg></configure>
             </property>
         </entity>
         <entity name="StringConst18" class="ptolemy.actor.lib.StringConst">
-            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;0&gt;">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;1&gt;">
             </property>
             <doc>Create a constant sequence with a string value.</doc>
             <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
@@ -261,7 +245,7 @@ Sending data to  HLA (BBB)</text></svg></configure>
             </property>
         </entity>
         <entity name="StringConst19" class="ptolemy.actor.lib.StringConst">
-            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;0&gt;">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;0;1&gt;">
             </property>
             <doc>Create a constant sequence with a string value.</doc>
             <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
@@ -348,21 +332,6 @@ Sending data to  HLA (BBB)</text></svg></configure>
                 </property>
             </property>
             <property name="_location" class="ptolemy.kernel.util.Location" value="[865.0, 665.0]">
-            </property>
-        </entity>
-        <entity name="StringConst3" class="ptolemy.actor.lib.StringConst">
-            <property name="value" class="ptolemy.data.expr.Parameter" value="&lt;-5;0&gt;">
-            </property>
-            <doc>Create a constant sequence with a string value.</doc>
-            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
-                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
-                </property>
-                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="80">
-                </property>
-                <property name="displayHeight" class="ptolemy.data.expr.Parameter" value="10">
-                </property>
-            </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[845.0, 735.0]">
             </property>
         </entity>
         <entity name="StringConst4" class="ptolemy.actor.lib.StringConst">
@@ -461,10 +430,6 @@ Sending data to  HLA (BBB)</text></svg></configure>
             <property name="width" class="ptolemy.data.expr.Parameter" value="1">
             </property>
         </relation>
-        <relation name="relation10" class="ptolemy.actor.TypedIORelation">
-            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
-            </property>
-        </relation>
         <relation name="relation11" class="ptolemy.actor.TypedIORelation">
             <property name="width" class="ptolemy.data.expr.Parameter" value="1">
             </property>
@@ -497,10 +462,6 @@ Sending data to  HLA (BBB)</text></svg></configure>
             <property name="width" class="ptolemy.data.expr.Parameter" value="1">
             </property>
         </relation>
-        <relation name="relation19" class="ptolemy.actor.TypedIORelation">
-            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
-            </property>
-        </relation>
         <relation name="relation21" class="ptolemy.actor.TypedIORelation">
             <property name="width" class="ptolemy.data.expr.Parameter" value="1">
             </property>
@@ -513,8 +474,6 @@ Sending data to  HLA (BBB)</text></svg></configure>
         </relation>
         <link port="port" relation="relation21"/>
         <link port="port2" relation="relation20"/>
-        <link port="StringConst.output" relation="relation10"/>
-        <link port="StringConst.trigger" relation="relation21"/>
         <link port="Commutator.input" relation="relation"/>
         <link port="Commutator.input" relation="relation2"/>
         <link port="Commutator.input" relation="relation3"/>
@@ -524,7 +483,6 @@ Sending data to  HLA (BBB)</text></svg></configure>
         <link port="Commutator.input" relation="relation7"/>
         <link port="Commutator.input" relation="relation8"/>
         <link port="Commutator.input" relation="relation9"/>
-        <link port="Commutator.input" relation="relation10"/>
         <link port="Commutator.input" relation="relation11"/>
         <link port="Commutator.input" relation="relation12"/>
         <link port="Commutator.input" relation="relation13"/>
@@ -533,7 +491,6 @@ Sending data to  HLA (BBB)</text></svg></configure>
         <link port="Commutator.input" relation="relation16"/>
         <link port="Commutator.input" relation="relation17"/>
         <link port="Commutator.input" relation="relation18"/>
-        <link port="Commutator.input" relation="relation19"/>
         <link port="Commutator.output" relation="relation20"/>
         <link port="StringConst12.output" relation="relation8"/>
         <link port="StringConst12.trigger" relation="relation21"/>
@@ -561,8 +518,6 @@ Sending data to  HLA (BBB)</text></svg></configure>
         <link port="StringConst6.trigger" relation="relation21"/>
         <link port="StringConst7.output" relation="relation18"/>
         <link port="StringConst7.trigger" relation="relation21"/>
-        <link port="StringConst3.output" relation="relation19"/>
-        <link port="StringConst3.trigger" relation="relation21"/>
         <link port="StringConst4.output" relation="relation11"/>
         <link port="StringConst4.trigger" relation="relation21"/>
         <link port="StringConst9.output" relation="relation15"/>
@@ -572,20 +527,50 @@ Sending data to  HLA (BBB)</text></svg></configure>
         <link port="StringConst2.output" relation="relation17"/>
         <link port="StringConst2.trigger" relation="relation21"/>
     </entity>
+    <entity name="Display" class="ptolemy.actor.lib.gui.Display">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute">
+        </property>
+        <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-195.0, 70.0]">
+        </property>
+    </entity>
+    <entity name="DiscreteRandomSource" class="ptolemy.actor.lib.DiscreteRandomSource">
+        <property name="pmf" class="ptolemy.data.expr.Parameter" value="{0.25, 0.25, 0.25, 0.25}">
+        </property>
+        <property name="values" class="ptolemy.data.expr.Parameter" value="{0, 1, 10, 10}">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-505.0, 70.0]">
+        </property>
+    </entity>
     <relation name="relation3" class="ptolemy.actor.TypedIORelation">
         <property name="width" class="ptolemy.data.expr.Parameter" value="1">
         </property>
-        <vertex name="vertex1" value="[-225.0, 175.0]">
+        <vertex name="vertex1" value="[-435.0, -30.0]">
+        </vertex>
+    </relation>
+    <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[-565.0, 25.0]">
         </vertex>
     </relation>
     <relation name="relation" class="ptolemy.actor.TypedIORelation">
         <property name="width" class="ptolemy.data.expr.Parameter" value="1">
         </property>
     </relation>
-    <link port="MasterFederateActor.inTemperature" relation="relation3"/>
-    <link port="MasterFederateActor.inGoto" relation="relation3"/>
-    <link port="Clock.output" relation="relation"/>
-    <link port="Display.input" relation="relation3"/>
-    <link port="CompositeActor.port" relation="relation"/>
+    <link port="MasterFederateActor.signal" relation="relation3"/>
+    <link port="MasterFederateActor.inSensor1" relation="relation"/>
+    <link port="MasterFederateActor.inGps" relation="relation3"/>
+    <link port="MasterFederateActor.output" relation="relation5"/>
+    <link port="Clock.output" relation="relation4"/>
+    <link port="CompositeActor.port" relation="relation4"/>
     <link port="CompositeActor.port2" relation="relation3"/>
+    <link port="Display.input" relation="relation5"/>
+    <link port="DiscreteRandomSource.output" relation="relation"/>
+    <link port="DiscreteRandomSource.trigger" relation="relation4"/>
 </entity>
