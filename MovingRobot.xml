@@ -2,6 +2,20 @@
 <!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
     "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
 <entity name="MovingRobot" class="ptolemy.actor.TypedCompositeActor">
+    <property name="Rectangle" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[160.0, -30.0]">
+        </property>
+        <property name="width" class="ptolemy.data.expr.Parameter" value="256.0">
+        </property>
+        <property name="height" class="ptolemy.data.expr.Parameter" value="100.0">
+        </property>
+        <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="{195, -15}">
+            </property>
+        </property>
+        <property name="_renderFirst" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+    </property>
     <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="7.0.1">
     </property>
     <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={49, 24, 1317, 744}, maximized=true}">
@@ -66,14 +80,20 @@
     </property>
     <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
     </property>
-    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{555.5, 326.5}">
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{177.8116554054054, 251.3940033783784}">
     </property>
     <property name="WirelessDirector" class="ptolemy.domains.wireless.kernel.WirelessDirector">
         <property name="stopTime" class="ptolemy.data.expr.Parameter" value="Infinity">
         </property>
         <property name="synchronizeToRealTime" class="ptolemy.data.expr.Parameter" value="true">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="{75.0, 40.0}">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[80.0, -20.0]">
+        </property>
+    </property>
+    <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+        <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Canais">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[250.0, -25.0]">
         </property>
     </property>
     <entity name="SoundSource" class="ptolemy.domains.wireless.kernel.WirelessComposite">
@@ -87,15 +107,15 @@
                 </property>
             </property>
         </property>
-        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={49, 24, 1317, 744}, maximized=true}">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={49, -4, 1317, 772}, maximized=true}">
         </property>
         <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1111, 653]">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[300.0, 300.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[165.0, 180.0]">
         </property>
         <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.9343536287393">
         </property>
-        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{521.5286483764648, 316.1425555939076}">
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{521.5286483764648, 316.1425555939075}">
         </property>
         <property name="annotation" class="ptolemy.kernel.util.Attribute">
             <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
@@ -114,7 +134,7 @@
             </property>
             <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[545.0, 80.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[510.0, 110.0]">
             </property>
         </property>
         <property name="annotation2" class="ptolemy.kernel.util.Attribute">
@@ -134,7 +154,7 @@
             </property>
             <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[295.0, 70.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[275.0, 140.0]">
             </property>
         </property>
         <property name="annotation3" class="ptolemy.kernel.util.Attribute">
@@ -154,7 +174,7 @@
             </property>
             <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[492.4791717529297, 263.4765167236328]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[356.22918701171875, 228.97650146484375]">
             </property>
         </property>
         <property name="annotation4" class="ptolemy.kernel.util.Attribute">
@@ -174,21 +194,52 @@
             </property>
             <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[492.4791717529297, 458.4765167236328]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[356.22918701171875, 423.97650146484375]">
             </property>
         </property>
-        <property name="SlaveHLADEDirector" class="ptolemy.myactors.hlabbb.domain.SlaveHLADEDirector">
-            <property name="federateName" class="ptolemy.data.expr.StringParameter" value="PtolemySlaveFederate">
-            </property>
-            <property name="federateFile" class="ptolemy.data.expr.StringParameter" value="PyhlaToPtolemy.fed">
-            </property>
-            <property name="stopTime" class="ptolemy.data.expr.Parameter" value="1000">
-            </property>
-            <property name="stopWhenQueueIsEmpty" class="ptolemy.data.expr.Parameter" value="true">
-            </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[-20.0, -5.0]">
+        <property name="DE Director" class="ptolemy.domains.de.kernel.DEDirector">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="{275, 60}">
             </property>
         </property>
+        <port name="posX" class="ptolemy.domains.wireless.kernel.WirelessIOPort">
+            <property name="input"/>
+            <property name="outsideChannel" class="ptolemy.data.expr.StringParameter" value="x">
+            </property>
+            <property name="insideChannel" class="ptolemy.data.expr.StringParameter" value="">
+            </property>
+            <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 265.0]">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
+        <port name="Sensor1" class="ptolemy.domains.wireless.kernel.WirelessIOPort">
+<display name="Sensor 1"/>            <property name="input"/>
+            <property name="outsideChannel" class="ptolemy.data.expr.StringParameter" value="sensor1">
+            </property>
+            <property name="insideChannel" class="ptolemy.data.expr.StringParameter" value="">
+            </property>
+            <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[235.0, 185.0]">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+        </port>
+        <port name="posY" class="ptolemy.domains.wireless.kernel.WirelessIOPort">
+            <property name="input"/>
+            <property name="outsideChannel" class="ptolemy.data.expr.StringParameter" value="y">
+            </property>
+            <property name="insideChannel" class="ptolemy.data.expr.StringParameter" value="">
+            </property>
+            <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[245.0, 415.0]">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
         <entity name="Expression" class="ptolemy.actor.lib.Expression">
             <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="[sin(x)*200 + 300, sin(y)*200 + 300]">
             </property>
@@ -198,7 +249,7 @@
                 <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
                 </property>
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[685.0, 375.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[548.7500152587891, 340.49998474121094]">
             </property>
             <port name="x" class="ptolemy.actor.TypedIOPort">
                 <property name="input"/>
@@ -206,21 +257,6 @@
             <port name="y" class="ptolemy.actor.TypedIOPort">
                 <property name="input"/>
             </port>
-        </entity>
-        <entity name="Clock2" class="ptolemy.actor.lib.Clock">
-            <property name="period" class="ptolemy.actor.parameters.PortParameter" value="1.0">
-            </property>
-            <property name="offsets" class="ptolemy.data.expr.Parameter" value="{0.0}">
-            </property>
-            <property name="values" class="ptolemy.data.expr.Parameter" value="{1.0}">
-            </property>
-            <property name="numberOfCycles" class="ptolemy.data.expr.Parameter" value="-1">
-            </property>
-            <doc>Create a set of pulses</doc>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[-5.0, 245.0]">
-            </property>
-            <property name="_icon" class="ptolemy.vergil.icon.XMLIcon">
-            </property>
         </entity>
         <entity name="SetVariable" class="ptolemy.actor.lib.SetVariable">
             <property name="variableName" class="ptolemy.kernel.util.StringAttribute" value="_location">
@@ -231,17 +267,17 @@
                 <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
                 </property>
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[915.0, 375.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[778.7500152587891, 340.49998474121094]">
             </property>
         </entity>
         <entity name="XYPlotter" class="ptolemy.actor.lib.gui.XYPlotter">
             <property name="legend" class="ptolemy.kernel.util.StringAttribute" value="Robot position">
             </property>
-            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={754, 302, 500, 351}, maximized=false}">
+            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={754, 52, 500, 323}, maximized=false}">
             </property>
             <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[500, 300]">
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[1075.0, 375.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[938.7500152587891, 340.49998474121094]">
             </property>
             <configure>
 <?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
@@ -266,7 +302,7 @@
                 <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
                 </property>
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[760.0, 450.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[643.7500152587891, 415.49998474121094]">
             </property>
             <port name="y" class="ptolemy.actor.TypedIOPort">
                 <property name="input"/>
@@ -281,7 +317,7 @@
                 <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
                 </property>
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[760.0, 300.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[623.7500152587891, 265.49998474121094]">
             </property>
             <port name="x" class="ptolemy.actor.TypedIOPort">
                 <property name="input"/>
@@ -297,35 +333,204 @@
                 <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
                 </property>
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[115.0, 175.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[365.0, 215.0]">
             </property>
         </entity>
         <entity name="TimedPlotter" class="ptolemy.actor.lib.gui.TimedPlotter">
             <property name="legend" class="ptolemy.kernel.util.StringAttribute" value="Obstaculo detectado!">
             </property>
-            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={129, 179, 500, 323}, maximized=false}">
+            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={129, 263, 500, 323}, maximized=false}">
             </property>
             <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[500, 300]">
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[870.0, 165.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[835.0, 195.0]">
             </property>
             <configure>
 <?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
 "http://ptolemy.eecs.berkeley.edu/xml/dtd/PlotML_1.dtd">
 <plot>
 <title>TimedPlotter</title>
-<xRange min="0.0" max="0.0"/>
+<xRange min="1.0" max="35.0"/>
 <yRange min="0.0" max="0.0"/>
 </plot>?>
             </configure>
         </entity>
         <entity name="BooleanToAnything" class="ptolemy.actor.lib.conversions.BooleanToAnything">
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[705.0, 165.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[670.0, 195.0]">
+            </property>
+        </entity>
+        <entity name="StringCompare" class="ptolemy.actor.lib.string.StringCompare">
+            <property name="firstString" class="ptolemy.actor.parameters.PortParameter" value="&quot;10&quot;">
+            </property>
+            <doc>Output a comparison function of two strings</doc>
+            <property name="_icon" class="ptolemy.vergil.icon.AttributeValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="function">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[485.0, 195.0]">
+            </property>
+        </entity>
+        <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+            <vertex name="vertex1" value="[418.75001525878906, 265.49998474121094]">
+            </vertex>
+        </relation>
+        <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+            <vertex name="vertex1" value="[418.75001525878906, 415.49998474121094]">
+            </vertex>
+        </relation>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        </relation>
+        <relation name="relation11" class="ptolemy.actor.TypedIORelation">
+            <vertex name="vertex1" value="[703.7500152587891, 340.49998474121094]">
+            </vertex>
+        </relation>
+        <relation name="relation6" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+            <vertex name="vertex1" value="[360.0, 185.0]">
+            </vertex>
+        </relation>
+        <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation8" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation14" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+            <vertex name="vertex1" value="[763.7500152587891, 265.49998474121094]">
+            </vertex>
+        </relation>
+        <relation name="relation7" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+            <vertex name="vertex1" value="[808.7500152587891, 415.49998474121094]">
+            </vertex>
+        </relation>
+        <relation name="relation9" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <link port="posX" relation="relation3"/>
+        <link port="Sensor1" relation="relation9"/>
+        <link port="posY" relation="relation4"/>
+        <link port="Expression.output" relation="relation11"/>
+        <link port="Expression.x" relation="relation3"/>
+        <link port="Expression.y" relation="relation4"/>
+        <link port="SetVariable.input" relation="relation11"/>
+        <link port="XYPlotter.inputX" relation="relation14"/>
+        <link port="XYPlotter.inputY" relation="relation7"/>
+        <link port="Expression2.output" relation="relation7"/>
+        <link port="Expression2.y" relation="relation4"/>
+        <link port="Expression3.output" relation="relation14"/>
+        <link port="Expression3.x" relation="relation3"/>
+        <link port="Const.output" relation="relation8"/>
+        <link port="TimedPlotter.input" relation="relation"/>
+        <link port="BooleanToAnything.input" relation="relation5"/>
+        <link port="BooleanToAnything.output" relation="relation"/>
+        <link port="StringCompare.firstString" relation="relation9"/>
+        <link port="StringCompare.secondString" relation="relation8"/>
+        <link port="StringCompare.output" relation="relation5"/>
+    </entity>
+    <entity name="x" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
+        <property name="lossProbability" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="seed" class="ptolemy.data.expr.Parameter" value="0L">
+        </property>
+        <property name="propagationSpeed" class="ptolemy.data.expr.Parameter" value="Infinity">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[215.0, 35.0]">
+        </property>
+    </entity>
+    <entity name="y" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
+        <property name="lossProbability" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="seed" class="ptolemy.data.expr.Parameter" value="0L">
+        </property>
+        <property name="propagationSpeed" class="ptolemy.data.expr.Parameter" value="340.0">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[290.0, 35.0]">
+        </property>
+    </entity>
+    <entity name="SoundSource2" class="ptolemy.domains.wireless.kernel.WirelessComposite">
+<display name="Central"/>        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={59, 24, 658, 744}, maximized=false}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[452, 625]">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[85.0, 45.0]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.7291528494348">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{459.3671875000004, 424.9940369192477}">
+        </property>
+        <property name="SlaveHLADEDirector" class="ptolemy.myactors.hlabbb.domain.SlaveHLADEDirector">
+            <property name="federateName" class="ptolemy.data.expr.StringParameter" value="PtolemySlaveFederate">
+            </property>
+            <property name="federateFile" class="ptolemy.data.expr.StringParameter" value="PyhlaToPtolemy.fed">
+            </property>
+            <property name="stopTime" class="ptolemy.data.expr.Parameter" value="1000">
+            </property>
+            <property name="stopWhenQueueIsEmpty" class="ptolemy.data.expr.Parameter" value="true">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[345.0, 190.0]">
+            </property>
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.EditorIcon">
+            <property name="image" class="ptolemy.vergil.kernel.attributes.ImageAttribute">
+                <property name="source" class="ptolemy.data.expr.FileParameter" value="file:/home/luis/workspace/Ptolemy/src/router.png">
+                </property>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[-15.0, -19.0]">
+                </property>
+            </property>
+        </property>
+        <port name="PosX" class="ptolemy.domains.wireless.kernel.WirelessIOPort">
+            <property name="output"/>
+            <property name="outsideChannel" class="ptolemy.data.expr.StringParameter" value="x">
+            </property>
+            <property name="insideChannel" class="ptolemy.data.expr.StringParameter" value="">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[620.0, 325.0]">
+            </property>
+            <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="PosY" class="ptolemy.domains.wireless.kernel.WirelessIOPort">
+            <property name="output"/>
+            <property name="outsideChannel" class="ptolemy.data.expr.StringParameter" value="y">
+            </property>
+            <property name="insideChannel" class="ptolemy.data.expr.StringParameter" value="">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[620.0, 360.0]">
+            </property>
+            <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="Sensor1" class="ptolemy.domains.wireless.kernel.WirelessIOPort">
+            <property name="output"/>
+            <property name="outsideChannel" class="ptolemy.data.expr.StringParameter" value="sensor1">
+            </property>
+            <property name="insideChannel" class="ptolemy.data.expr.StringParameter" value="">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[620.0, 295.0]">
+            </property>
+            <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <entity name="Clock" class="ptolemy.actor.lib.Clock">
+            <property name="period" class="ptolemy.actor.parameters.PortParameter" value="2.0">
+            </property>
+            <doc>Create periodic timed events.</doc>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[315.0, 275.0]">
             </property>
         </entity>
         <entity name="SlaveFederateActor" class="ptolemy.myactors.hlabbb.SlaveFederateActor">
 <display name="HLA BBB "/>            <doc>HLA Actor.</doc>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[165.0, 295.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[400.0, 325.0]">
             </property>
             <property name="_icon" class="ptolemy.vergil.icon.EditorIcon">
                 <property name="rectangle" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
@@ -380,6 +585,12 @@
                 <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
                 </property>
             </port>
+            <port name="position" class="ptolemy.actor.TypedIOPort">
+                <property name="output"/>
+                <property name="multiport"/>
+                <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+                </property>
+            </port>
             <port name="compass" class="ptolemy.actor.TypedIOPort">
                 <property name="output"/>
                 <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
@@ -406,6 +617,304 @@
                 </property>
             </port>
         </entity>
+        <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <link port="PosX" relation="relation"/>
+        <link port="PosY" relation="relation2"/>
+        <link port="Sensor1" relation="relation4"/>
+        <link port="Clock.output" relation="relation3"/>
+        <link port="SlaveFederateActor.signal" relation="relation3"/>
+        <link port="SlaveFederateActor.sensor1" relation="relation4"/>
+        <link port="SlaveFederateActor.position" relation="relation"/>
+        <link port="SlaveFederateActor.position" relation="relation2"/>
+    </entity>
+    <entity name="sensor1" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
+        <property name="lossProbability" class="ptolemy.data.expr.Parameter" value="0.0">
+        </property>
+        <property name="seed" class="ptolemy.data.expr.Parameter" value="0L">
+        </property>
+        <property name="propagationSpeed" class="ptolemy.data.expr.Parameter" value="Infinity">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[360.0, 35.0]">
+        </property>
+    </entity>
+    <entity name="SoundSource4" class="ptolemy.domains.wireless.kernel.WirelessComposite">
+        <property name="_hideName" class="ptolemy.kernel.util.Attribute">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.EditorIcon">
+            <property name="image" class="ptolemy.vergil.kernel.attributes.ImageAttribute">
+                <property name="source" class="ptolemy.data.expr.FileParameter" value="file:/home/luis/robot.png">
+                </property>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[-50.0, -45.0]">
+                </property>
+            </property>
+        </property>
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={49, -4, 1317, 772}, maximized=true}">
+        </property>
+        <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1111, 653]">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[165.0, 315.0]">
+        </property>
+        <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.9343536287393">
+        </property>
+        <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{521.5286483764648, 316.1425555939075}">
+        </property>
+        <property name="annotation" class="ptolemy.kernel.util.Attribute">
+            <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+            </property>
+            <property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure><svg><text x="20" y="20" style="font-size:14; font-family:SansSerif; fill:blue">Resultado da comparacao (boolean)</text></svg></configure>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-A-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_controllerFactory" class="ptolemy.vergil.basic.NodeControllerFactory">
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[510.0, 110.0]">
+            </property>
+        </property>
+        <property name="annotation2" class="ptolemy.kernel.util.Attribute">
+            <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+            </property>
+            <property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure><svg><text x="20" y="20" style="font-size:14; font-family:SansSerif; fill:blue">Valor lido de Sensor1</text></svg></configure>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-A-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_controllerFactory" class="ptolemy.vergil.basic.NodeControllerFactory">
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[275.0, 140.0]">
+            </property>
+        </property>
+        <property name="annotation3" class="ptolemy.kernel.util.Attribute">
+            <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+            </property>
+            <property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure><svg><text x="20" y="20" style="font-size:14; font-family:SansSerif; fill:blue">Valor lido de X</text></svg></configure>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-A-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_controllerFactory" class="ptolemy.vergil.basic.NodeControllerFactory">
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[356.22918701171875, 228.97650146484375]">
+            </property>
+        </property>
+        <property name="annotation4" class="ptolemy.kernel.util.Attribute">
+            <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+            </property>
+            <property name="_iconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure><svg><text x="20" y="20" style="font-size:14; font-family:SansSerif; fill:blue">Valor lido de Y</text></svg></configure>
+            </property>
+            <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+                <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-A-</text>
+      </svg>
+    </configure>
+            </property>
+            <property name="_controllerFactory" class="ptolemy.vergil.basic.NodeControllerFactory">
+            </property>
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.AnnotationEditorFactory">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[356.22918701171875, 423.97650146484375]">
+            </property>
+        </property>
+        <property name="DE Director" class="ptolemy.domains.de.kernel.DEDirector">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="{275, 60}">
+            </property>
+        </property>
+        <port name="posX" class="ptolemy.domains.wireless.kernel.WirelessIOPort">
+            <property name="input"/>
+            <property name="outsideChannel" class="ptolemy.data.expr.StringParameter" value="x">
+            </property>
+            <property name="insideChannel" class="ptolemy.data.expr.StringParameter" value="">
+            </property>
+            <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-60.0, 265.0]">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
+        <port name="Sensor1" class="ptolemy.domains.wireless.kernel.WirelessIOPort">
+<display name="Sensor 1"/>            <property name="input"/>
+            <property name="outsideChannel" class="ptolemy.data.expr.StringParameter" value="sensor1">
+            </property>
+            <property name="insideChannel" class="ptolemy.data.expr.StringParameter" value="">
+            </property>
+            <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[220.0, 185.0]">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+        </port>
+        <port name="posY" class="ptolemy.domains.wireless.kernel.WirelessIOPort">
+            <property name="input"/>
+            <property name="outsideChannel" class="ptolemy.data.expr.StringParameter" value="x">
+            </property>
+            <property name="insideChannel" class="ptolemy.data.expr.StringParameter" value="">
+            </property>
+            <property name="_hide" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[-65.0, 380.0]">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
+        <entity name="Expression" class="ptolemy.actor.lib.Expression">
+            <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="[sin(x)*200 + 300, sin(y)*200 + 300]">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[548.7500152587891, 340.49998474121094]">
+            </property>
+            <port name="x" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+            </port>
+            <port name="y" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+            </port>
+        </entity>
+        <entity name="SetVariable" class="ptolemy.actor.lib.SetVariable">
+            <property name="variableName" class="ptolemy.kernel.util.StringAttribute" value="_location">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="variableName">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="40">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[778.7500152587891, 340.49998474121094]">
+            </property>
+        </entity>
+        <entity name="XYPlotter" class="ptolemy.actor.lib.gui.XYPlotter">
+            <property name="legend" class="ptolemy.kernel.util.StringAttribute" value="Robot position">
+            </property>
+            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={754, 52, 500, 323}, maximized=false}">
+            </property>
+            <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[500, 300]">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[938.7500152587891, 340.49998474121094]">
+            </property>
+            <configure>
+<?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
+"http://ptolemy.eecs.berkeley.edu/xml/dtd/PlotML_1.dtd">
+<plot>
+<title>XYPlotter</title>
+<xLabel></xLabel>
+<yLabel></yLabel>
+<xRange min="101.64422931137685" max="499.29383462435476"/>
+<yRange min="100.33058124064564" max="499.76333824056167"/>
+<noGrid/>
+<default connected="no" marks="dots"/>
+</plot>?>
+            </configure>
+        </entity>
+        <entity name="Expression2" class="ptolemy.actor.lib.Expression">
+            <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="sin(y)*200 + 300">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[643.7500152587891, 415.49998474121094]">
+            </property>
+            <port name="y" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+            </port>
+        </entity>
+        <entity name="Expression3" class="ptolemy.actor.lib.Expression">
+            <property name="expression" class="ptolemy.kernel.util.StringAttribute" value="sin(x)*200 + 300">
+            </property>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="expression">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[623.7500152587891, 265.49998474121094]">
+            </property>
+            <port name="x" class="ptolemy.actor.TypedIOPort">
+                <property name="input"/>
+            </port>
+        </entity>
+        <entity name="Const" class="ptolemy.actor.lib.Const">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="&quot;10&quot;">
+            </property>
+            <doc>Create a constant sequence.</doc>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[365.0, 215.0]">
+            </property>
+        </entity>
+        <entity name="TimedPlotter" class="ptolemy.actor.lib.gui.TimedPlotter">
+            <property name="legend" class="ptolemy.kernel.util.StringAttribute" value="Obstaculo detectado!">
+            </property>
+            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={129, 235, 500, 351}, maximized=false}">
+            </property>
+            <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[500, 300]">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[835.0, 195.0]">
+            </property>
+            <configure>
+<?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
+"http://ptolemy.eecs.berkeley.edu/xml/dtd/PlotML_1.dtd">
+<plot>
+<title>TimedPlotter</title>
+<xRange min="1.0" max="35.0"/>
+<yRange min="0.0" max="0.0"/>
+</plot>?>
+            </configure>
+        </entity>
+        <entity name="BooleanToAnything" class="ptolemy.actor.lib.conversions.BooleanToAnything">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[670.0, 195.0]">
+            </property>
+        </entity>
         <entity name="StringCompare" class="ptolemy.actor.lib.string.StringCompare">
             <property name="firstString" class="ptolemy.actor.parameters.PortParameter" value="&quot;10&quot;">
             </property>
@@ -416,33 +925,52 @@
                 <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="10">
                 </property>
             </property>
-            <property name="_location" class="ptolemy.kernel.util.Location" value="[520.0, 165.0]">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[485.0, 195.0]">
+            </property>
+        </entity>
+        <entity name="Display" class="ptolemy.actor.lib.gui.Display">
+            <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={417, 294, 522, 233}, maximized=false}">
+            </property>
+            <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[522, 182]">
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="{640, 560}">
+            </property>
+        </entity>
+        <entity name="AddSubtract2" class="ptolemy.actor.lib.AddSubtract">
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[125.0, 390.0]">
+            </property>
+        </entity>
+        <entity name="Const2" class="ptolemy.actor.lib.Const">
+            <property name="value" class="ptolemy.data.expr.Parameter" value="100">
+            </property>
+            <doc>Create a constant sequence.</doc>
+            <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+                <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+                </property>
+                <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+                </property>
+            </property>
+            <property name="_location" class="ptolemy.kernel.util.Location" value="[30.0, 330.0]">
             </property>
         </entity>
         <relation name="relation3" class="ptolemy.actor.TypedIORelation">
-            <vertex name="vertex1" value="[555.0, 300.0]">
+            <vertex name="vertex1" value="[418.75001525878906, 265.49998474121094]">
             </vertex>
         </relation>
         <relation name="relation4" class="ptolemy.actor.TypedIORelation">
-            <vertex name="vertex1" value="[555.0, 450.0]">
+            <vertex name="vertex1" value="[418.75001525878906, 415.49998474121094]">
             </vertex>
         </relation>
         <relation name="relation" class="ptolemy.actor.TypedIORelation">
         </relation>
         <relation name="relation11" class="ptolemy.actor.TypedIORelation">
-            <vertex name="vertex1" value="{840.0, 375.0}">
-            </vertex>
-        </relation>
-        <relation name="relation12" class="ptolemy.actor.TypedIORelation">
-            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
-            </property>
-            <vertex name="vertex1" value="[80.0, 245.0]">
+            <vertex name="vertex1" value="[703.7500152587891, 340.49998474121094]">
             </vertex>
         </relation>
         <relation name="relation6" class="ptolemy.actor.TypedIORelation">
             <property name="width" class="ptolemy.data.expr.Parameter" value="1">
             </property>
-            <vertex name="vertex1" value="[395.0, 155.0]">
+            <vertex name="vertex1" value="[360.0, 185.0]">
             </vertex>
         </relation>
         <relation name="relation5" class="ptolemy.actor.TypedIORelation">
@@ -456,19 +984,35 @@
         <relation name="relation14" class="ptolemy.actor.TypedIORelation">
             <property name="width" class="ptolemy.data.expr.Parameter" value="1">
             </property>
-            <vertex name="vertex1" value="[900.0, 300.0]">
+            <vertex name="vertex1" value="[763.7500152587891, 265.49998474121094]">
             </vertex>
         </relation>
         <relation name="relation7" class="ptolemy.actor.TypedIORelation">
             <property name="width" class="ptolemy.data.expr.Parameter" value="1">
             </property>
-            <vertex name="vertex1" value="[945.0, 450.0]">
+            <vertex name="vertex1" value="[808.7500152587891, 415.49998474121094]">
             </vertex>
         </relation>
+        <relation name="relation9" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+        </relation>
+        <relation name="relation12" class="ptolemy.actor.TypedIORelation">
+            <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+            </property>
+            <vertex name="vertex1" value="[-15.0, 380.0]">
+            </vertex>
+        </relation>
+        <link port="posX" relation="relation3"/>
+        <link port="Sensor1" relation="relation9"/>
+        <link port="posY" relation="relation12"/>
         <link port="Expression.output" relation="relation11"/>
         <link port="Expression.x" relation="relation3"/>
         <link port="Expression.y" relation="relation4"/>
-        <link port="Clock2.output" relation="relation12"/>
         <link port="SetVariable.input" relation="relation11"/>
         <link port="XYPlotter.inputX" relation="relation14"/>
         <link port="XYPlotter.inputY" relation="relation7"/>
@@ -477,36 +1021,19 @@
         <link port="Expression3.output" relation="relation14"/>
         <link port="Expression3.x" relation="relation3"/>
         <link port="Const.output" relation="relation8"/>
-        <link port="Const.trigger" relation="relation12"/>
         <link port="TimedPlotter.input" relation="relation"/>
         <link port="BooleanToAnything.input" relation="relation5"/>
         <link port="BooleanToAnything.output" relation="relation"/>
-        <link port="SlaveFederateActor.signal" relation="relation12"/>
-        <link port="SlaveFederateActor.sensor1" relation="relation6"/>
-        <link port="SlaveFederateActor.position" relation="relation4"/>
-        <link port="SlaveFederateActor.position" relation="relation3"/>
-        <link port="StringCompare.firstString" relation="relation6"/>
+        <link port="StringCompare.firstString" relation="relation9"/>
         <link port="StringCompare.secondString" relation="relation8"/>
         <link port="StringCompare.output" relation="relation5"/>
-    </entity>
-    <entity name="RadioChannel" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
-        <property name="lossProbability" class="ptolemy.data.expr.Parameter" value="0.0">
-        </property>
-        <property name="seed" class="ptolemy.data.expr.Parameter" value="0L">
-        </property>
-        <property name="propagationSpeed" class="ptolemy.data.expr.Parameter" value="Infinity">
-        </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="175.0, 45.0">
-        </property>
-    </entity>
-    <entity name="SoundChannel" class="ptolemy.domains.wireless.lib.LimitedRangeChannel">
-        <property name="lossProbability" class="ptolemy.data.expr.Parameter" value="0.0">
-        </property>
-        <property name="seed" class="ptolemy.data.expr.Parameter" value="0L">
-        </property>
-        <property name="propagationSpeed" class="ptolemy.data.expr.Parameter" value="340.0">
-        </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="295.0, 45.0">
-        </property>
+        <link port="Display.input" relation="relation4"/>
+        <link port="Display.input" relation="relation3"/>
+        <link port="Display.input" relation="relation6"/>
+        <link port="AddSubtract2.plus" relation="relation2"/>
+        <link port="AddSubtract2.plus" relation="relation12"/>
+        <link port="AddSubtract2.output" relation="relation4"/>
+        <link port="Const2.output" relation="relation2"/>
+        <link port="Const2.trigger" relation="relation12"/>
     </entity>
 </entity>
