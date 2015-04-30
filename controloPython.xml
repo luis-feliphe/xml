@@ -1,0 +1,495 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="controloPython" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="7.0.1">
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={2602, 80, 696, 848}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[490, 759]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.843650356819">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{-375.674715909091, 53.9561237373737}">
+    </property>
+    <property name="timeWindow" class="ptolemy.data.expr.Parameter" value="1">
+        <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
+            <property name="_color" class="ptolemy.actor.gui.ColorAttribute" value="{0.0, 0.0, 1.0, 1.0}">
+            </property>
+        </property>
+        <property name="_smallIconDescription" class="ptolemy.kernel.util.SingletonConfigurableAttribute">
+            <configure>
+      <svg>
+        <text x="20" style="font-size:14; font-family:SansSerif; fill:blue" y="20">-P-</text>
+      </svg>
+    </configure>
+        </property>
+        <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{-610.0, -90.0}">
+        </property>
+    </property>
+    <property name="SlaveHLADEDirector" class="ptolemy.myactors.hlabbb.domain.SlaveHLADEDirector">
+        <property name="federateName" class="ptolemy.data.expr.StringParameter" value="PtolemySlaveFederate">
+        </property>
+        <property name="federateFile" class="ptolemy.data.expr.StringParameter" value="PyhlaToPtolemy.fed">
+        </property>
+        <property name="stopTime" class="ptolemy.data.expr.Parameter" value="Infinity">
+        </property>
+        <property name="stopWhenQueueIsEmpty" class="ptolemy.data.expr.Parameter" value="true">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{-560.0, -135.0}">
+        </property>
+    </property>
+    <entity name="PythonActor" class="ptolemy.actor.lib.python.PythonScript">
+        <property name="script" class="ptolemy.kernel.util.StringAttribute" value="import ptolemy.data&#10;import math&#10;&#10;&#10;&#10;class Main :&#10;	def __init__ (self):&#10;		self.lex= 0&#10;		self.ley= 0&#10;		self.lez= 0&#10;		self.mId= 0&#10;		self.mmx=0&#10;		self.mmy=0&#10;		self.mmz=0&#10;	&#10;	def whereImGoing(self):&#10;		lx= float (self.lex)&#10;		ly= float (self.ley)&#10;		lz= float (self.lez)&#10;		myId= str (self.mId)&#10;&#10;		if (myId == &quot;0&quot;): # Im the leader&#10;			return (0, 0)&#10;		elif (myId == &quot;1&quot;):&#10;			return lx -1 , ly-1&#10;		elif (myId == &quot;2&quot;):&#10;			return lx + 1 , ly-1&#10;		return 0, 0&#10;&#10;&#10;	def myPosition(self):&#10;		return self.mmx, self.mmy, self.mmz&#10;&#10;	def walkon(self):&#10;		return 1, 0 #linear and angular&#10;	def walkhorario(self):&#10;		return 0, -0.5 #linear and angular&#10;	def walkantihorario(self):&#10;		return 0, 0.5 #linear and angular&#10;	def walkback(self):&#10;		return -1, 0 #linear and angular&#10;&#10;	def degrees(self, value):&#10;		return ((value* 180.0)/math.pi)&#10;&#10;	def isOriented(self):&#10;		x, y = self.whereImGoing()&#10;		mx, my, mz = self.myPosition()&#10;		if (not (mx == 0 and my == 0)):&#10;			#calcula a distancia entre meu ponto e o ponto que quero ir&#10;			hip = math.hypot (x - mx, y - my)&#10;			#calcula a distancia dos dois catetos&#10;			tmp1 = math.hypot( x -mx, 0 )&#10;			tmp2 = math.hypot( 0, y -my )&#10;			#seleciona o maior cateto&#10;			cat = max ([tmp1, tmp2])&#10;			#calcula o angulo que preciso estar para&#10;			anguloEsperado = self.degrees(math.cos(float(cat)/hip))&#10;			deltax = x - mx&#10;			deltay = y - my&#10;			deltax = abs(deltax)&#10;			deltay = abs(deltay)&#10;			if (deltax&lt;0.19) and y &gt; my:&#10;			        anguloEsperado = 90&#10;			elif (deltax&lt;0.19) and y &lt; my:&#10;			        anguloEsperado = 270&#10;			elif (deltay&lt;0.19) and mx &lt; x:&#10;			        anguloEsperado = 0&#10;			elif (deltay&lt;0.19) and mx &gt; x:&#10;			        anguloEsperado = 180&#10;			elif mx &lt; x and my &lt;=y:&#10;			        pass#anguloEsperado += 180 &#10;			elif mx &lt; x and my &gt;= y:&#10;			        anguloEsperado= anguloEsperado +270# = 180 - anguloEsperado&#10;			elif mx &gt; x and my &lt;= y:&#10;			        anguloEsperado= anguloEsperado + 90# = 360 - anguloEsperado&#10;			elif mx &gt; x and my &gt;= y:&#10;			        anguloEsperado =anguloEsperado + 180# anguloEsperado&#10;			a = max ([anguloEsperado, mz])&#10;			b = min ([anguloEsperado , mz])&#10;			self.log.broadcast(ptolemy.data.StringToken(&quot;AE: &quot;+ str(anguloEsperado) + &quot; MA: &quot;+ str(mz)))&#10;			limin = 9&#10;			if ((a - b) &lt; limin or ((a-b)&gt;(360-limin))):&#10;			        return True , anguloEsperado, mz&#10;			return False, anguloEsperado, mz&#10;		return False, 1000, 800&#10;&#10;&#10;	def inPosition(self):&#10;		x, y = self.whereImGoing()&#10;		mx, my, mz = self.myPosition()&#10;		if ((math.hypot(x-mx, y-my))&lt; 0.3):&#10;		        return True&#10;		return False&#10;&#10;&#10;	def walk (self):&#10;		x, y = self.whereImGoing()&#10;		mx, my, mz = self.myPosition()&#10;		myId= str (self.mId)&#10;		if (myId == &quot;0&quot;): # Im the leader&#10;			self.log.broadcast(ptolemy.data.StringToken(&quot;Em frente&quot;))&#10;			return walkon()&#10;		else:&#10;		        if (not self.inPosition()):&#10;		                orient, ang, mz = self.isOriented()&#10;		                if (orient):&#10;					self.log.broadcast(ptolemy.data.StringToken(&quot;em frente &quot;))&#10;		                        return self.walkon()&#10;		                if ((ang - mz) &gt; 0):&#10;					self.log.broadcast(ptolemy.data.StringToken(&quot;antihorario&quot;))&#10;					if ((ang- mz) &lt; 180):&#10;						return self.walkantihorario()&#10;					else: &#10;						return self.walkhorario()&#10;				elif((ang- mz) &lt; 0):&#10;					if (abs((ang- mz)) &lt; 180):&#10;						return self.walkhorario()&#10;					else: &#10;						return self.walkantihorario()&#10;				else:&#10;					self.log.broadcast(ptolemy.data.StringToken(&quot;Deu aguia&quot;))&#10;		        else:&#10;				self.log.broadcast(ptolemy.data.StringToken(&quot;em posicao &quot;))&#10;				return 0, 0&#10;&#10;&#10;#		                if ((ang - mz) &gt; 0):# and (ang-mz) &lt; 180):&#10;#					self.log.broadcast(ptolemy.data.StringToken(&quot;antihorario&quot;))&#10;#					return self.walkantihorario()&#10;#		                else:&#10;#					#self.log.broadcast(ptolemy.data.StringToken(&quot;horario &quot;))&#10;#					return self.walkhorario()&#10;&#10;&#10;&#10;&#10;&#10;	def whereImGoing(self):&#10;		lx= float(self.lex)&#10;		ly= float (self.ley)&#10;		lz= float(self.lez)&#10;		myId = self.mId&#10;		distance = 2&#10;		if (myId == &quot;0&quot;): # Im the leader&#10;			return (0, 0)&#10;		elif (myId == &quot;1&quot;):&#10;			return lx -distance , ly - distance&#10;		elif (myId == &quot;2&quot;):&#10;			return lx + distance , ly  + distance&#10;		return 0, 0&#10;&#10;	def graus(self, value):&#10;		return (value*180.0) /math.pi&#10;&#10;	def fire(self) :&#10;		#self.output.broadcast(&quot;fala negada&quot;)&#10;		self.mId = str(self.myId.get(0).stringValue())&#10;		#leader position&#10;		self.lex  = self.lx.get(0).stringValue()&#10;		self.ley  = self.ly.get(0).stringValue()&#10;		self.lez = self.lz.get(0).stringValue()&#10;		#my position&#10;		self.mmx  = self.mx.get(0).doubleValue()&#10;		self.mmy  = self.my.get(0).doubleValue()&#10;		self.mmz  = self.mz.get(0).doubleValue()&#10;		linear, angular = self.walk()&#10;		self.linear.broadcast(ptolemy.data.DoubleToken(linear))&#10;		self.angular.broadcast(ptolemy.data.DoubleToken(angular))&#10;		return">
+            <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="_tableauFactory" class="ptolemy.vergil.toolbox.TextEditorTableauFactory">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="script">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-220.0, -95.0]">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.EditorIcon">
+            <property name="rectangle" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[2.0, -9.0]">
+                </property>
+                <property name="lineColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.5882353,0.5882353,0.5882353,1.0}">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="77.0">
+                </property>
+                <property name="height" class="ptolemy.data.expr.Parameter" value="90.0">
+                </property>
+                <property name="centered" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+                <property name="fillColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.7137255,0.654902,0.654902,1.0}">
+                </property>
+            </property>
+            <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+                <property name="text" class="ptolemy.kernel.util.StringAttribute" value="Control">
+                </property>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[-26.0, -17.0]">
+                </property>
+            </property>
+        </property>
+        <property name="_expertMode" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+        <port name="mx" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
+        <port name="my" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
+        <port name="mz" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
+        <port name="lx" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="ly" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="lz" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="myId" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+        </port>
+        <port name="linear" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
+        <port name="angular" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+        </port>
+        <port name="log" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+        </port>
+        <port name="output" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+        </port>
+    </entity>
+    <entity name="Clock" class="ptolemy.actor.lib.Clock">
+        <property name="period" class="ptolemy.actor.parameters.PortParameter" value="2.0">
+        </property>
+        <doc>Create periodic timed events.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-640.0, 40.0]">
+        </property>
+    </entity>
+    <entity name="SlaveFederateActor" class="ptolemy.myactors.hlabbb.SlaveFederateActor">
+<display name="HLA BBB "/>        <property name="robot id" class="ptolemy.data.expr.StringParameter" value="1">
+        </property>
+        <doc>HLA Actor.</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-445.0, 130.0]">
+        </property>
+        <property name="_icon" class="ptolemy.vergil.icon.EditorIcon">
+            <property name="rectangle" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
+                <property name="_location" class="ptolemy.kernel.util.Location" value="0.0, -2.0">
+                </property>
+                <property name="lineColor" class="ptolemy.actor.gui.ColorAttribute" value="{1.0,1.0,1.0,1.0}">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="61.0">
+                </property>
+                <property name="height" class="ptolemy.data.expr.Parameter" value="151.0">
+                </property>
+                <property name="centered" class="ptolemy.data.expr.Parameter" value="true">
+                </property>
+                <property name="fillColor" class="ptolemy.actor.gui.ColorAttribute" value="{0.0,0.0,0.0,1.0}">
+                </property>
+            </property>
+            <property name="Annotation" class="ptolemy.vergil.kernel.attributes.TextAttribute">
+                <property name="textSize" class="ptolemy.data.expr.Parameter" value="16">
+                </property>
+                <property name="textColor" class="ptolemy.actor.gui.ColorAttribute" value="{1.0,1.0,1.0,1.0}">
+                </property>
+                <property name="text" class="ptolemy.kernel.util.StringAttribute" value=" HLA&#10;Slave">
+                </property>
+                <property name="_location" class="ptolemy.kernel.util.Location" value="[-24.0, -19.0]">
+                </property>
+                <property name="_renderLast" class="ptolemy.kernel.util.SingletonAttribute">
+                </property>
+            </property>
+        </property>
+        <port name="signal" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="id" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+        </port>
+        <port name="battery" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="temperature" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="sensor1" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="sensor2" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="sensor3" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="position" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="multiport"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="compass" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="goto" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="rotate" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="activate" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inid" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inBattery" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inTemperature" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inSensor1" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inSensor2" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inSensor3" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inPosition" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inCompass" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inGoto" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inRotate" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="inActivate" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="gps" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+    </entity>
+    <entity name="PythonActor2" class="ptolemy.actor.lib.python.PythonScript">
+        <property name="script" class="ptolemy.kernel.util.StringAttribute" value="import ptolemy.data&#10;# This is a simple actor that copies the input to the output.&#10;# You can remove the ports, add new ports, and modify the script.&#10;class Main :&#10;  &quot;Copy the inputs to the output.&quot;&#10;  def fire(self) :&#10;    lin = str(self.linear.get(0).doubleValue())&#10;    ang =str( self.angular.get(0).doubleValue())&#10;    self.output.broadcast(ptolemy.data.StringToken(lin+&quot;;&quot;+ang))&#10;    return&#10;&#10;">
+            <property name="style" class="ptolemy.actor.gui.style.TextStyle">
+                <property name="height" class="ptolemy.data.expr.Parameter" value="10">
+                </property>
+                <property name="width" class="ptolemy.data.expr.Parameter" value="30">
+                </property>
+            </property>
+        </property>
+        <property name="_tableauFactory" class="ptolemy.vergil.toolbox.TextEditorTableauFactory">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="script">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-85.0, -110.0]">
+        </property>
+        <property name="_expertMode" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+        <port name="linear" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="angular" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="double">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <port name="output" class="ptolemy.actor.TypedIOPort">
+            <property name="output"/>
+            <property name="_type" class="ptolemy.actor.TypeAttribute" value="string">
+            </property>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+    </entity>
+    <entity name="TimedDelay" class="ptolemy.domains.de.lib.TimedDelay">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-570.0, 170.0]">
+        </property>
+    </entity>
+    <entity name="Const" class="ptolemy.actor.lib.Const">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="&quot;1&quot;">
+        </property>
+        <doc>Create a constant sequence.</doc>
+        <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
+            <property name="attributeName" class="ptolemy.kernel.util.StringAttribute" value="value">
+            </property>
+            <property name="displayWidth" class="ptolemy.data.expr.Parameter" value="60">
+            </property>
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-570.0, 80.0]">
+        </property>
+    </entity>
+    <relation name="relation7" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[-600.0, 40.0]">
+        </vertex>
+    </relation>
+    <relation name="relation10" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation11" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation12" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation9" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[-50.0, 250.0]">
+        </vertex>
+    </relation>
+    <relation name="relation8" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation4" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation5" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation15" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[-310.0, 130.0]">
+        </vertex>
+    </relation>
+    <relation name="relation16" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[-300.0, 145.0]">
+        </vertex>
+    </relation>
+    <relation name="relation17" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+        <vertex name="vertex1" value="[-290.0, 175.0]">
+        </vertex>
+    </relation>
+    <relation name="relation2" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <link port="PythonActor.mx" relation="relation15"/>
+    <link port="PythonActor.my" relation="relation16"/>
+    <link port="PythonActor.mz" relation="relation17"/>
+    <link port="PythonActor.lx" relation="relation10"/>
+    <link port="PythonActor.ly" relation="relation11"/>
+    <link port="PythonActor.lz" relation="relation12"/>
+    <link port="PythonActor.myId" relation="relation5"/>
+    <link port="PythonActor.linear" relation="relation"/>
+    <link port="PythonActor.angular" relation="relation2"/>
+    <link port="Clock.output" relation="relation7"/>
+    <link port="SlaveFederateActor.signal" relation="relation7"/>
+    <link port="SlaveFederateActor.id" relation="relation5"/>
+    <link port="SlaveFederateActor.sensor1" relation="relation10"/>
+    <link port="SlaveFederateActor.sensor2" relation="relation11"/>
+    <link port="SlaveFederateActor.sensor3" relation="relation12"/>
+    <link port="SlaveFederateActor.position" relation="relation15"/>
+    <link port="SlaveFederateActor.position" relation="relation16"/>
+    <link port="SlaveFederateActor.position" relation="relation17"/>
+    <link port="SlaveFederateActor.inid" relation="relation4"/>
+    <link port="SlaveFederateActor.inGoto" relation="relation8"/>
+    <link port="PythonActor2.linear" relation="relation"/>
+    <link port="PythonActor2.angular" relation="relation2"/>
+    <link port="PythonActor2.output" relation="relation9"/>
+    <link port="TimedDelay.input" relation="relation9"/>
+    <link port="TimedDelay.output" relation="relation8"/>
+    <link port="Const.output" relation="relation4"/>
+    <link port="Const.trigger" relation="relation7"/>
+</entity>
