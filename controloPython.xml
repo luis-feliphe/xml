@@ -4,13 +4,13 @@
 <entity name="controloPython" class="ptolemy.actor.TypedCompositeActor">
     <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="7.0.1">
     </property>
-    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={2602, 80, 696, 848}, maximized=false}">
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={781, 59, 699, 439}, maximized=false}">
     </property>
-    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[490, 759]">
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[493, 350]">
     </property>
-    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.843650356819">
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.64">
     </property>
-    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{-375.674715909091, 53.9561237373737}">
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{-361.7481831395348, 139.7834302325582}">
     </property>
     <property name="timeWindow" class="ptolemy.data.expr.Parameter" value="1">
         <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
@@ -44,7 +44,7 @@
         </property>
     </property>
     <entity name="PythonActor" class="ptolemy.actor.lib.python.PythonScript">
-        <property name="script" class="ptolemy.kernel.util.StringAttribute" value="import ptolemy.data&#10;import math&#10;&#10;&#10;&#10;class Main :&#10;	def __init__ (self):&#10;		self.lex= 0&#10;		self.ley= 0&#10;		self.lez= 0&#10;		self.mId= 0&#10;		self.mmx=0&#10;		self.mmy=0&#10;		self.mmz=0&#10;	&#10;	def whereImGoing(self):&#10;		lx= float (self.lex)&#10;		ly= float (self.ley)&#10;		lz= float (self.lez)&#10;		myId= str (self.mId)&#10;&#10;		if (myId == &quot;0&quot;): # Im the leader&#10;			return (0, 0)&#10;		elif (myId == &quot;1&quot;):&#10;			return lx -1 , ly-1&#10;		elif (myId == &quot;2&quot;):&#10;			return lx + 1 , ly-1&#10;		return 0, 0&#10;&#10;&#10;	def myPosition(self):&#10;		return self.mmx, self.mmy, self.mmz&#10;&#10;	def walkon(self):&#10;		return 1, 0 #linear and angular&#10;	def walkhorario(self):&#10;		return 0, -0.5 #linear and angular&#10;	def walkantihorario(self):&#10;		return 0, 0.5 #linear and angular&#10;	def walkback(self):&#10;		return -1, 0 #linear and angular&#10;&#10;	def degrees(self, value):&#10;		return ((value* 180.0)/math.pi)&#10;&#10;	def isOriented(self):&#10;		x, y = self.whereImGoing()&#10;		mx, my, mz = self.myPosition()&#10;		if (not (mx == 0 and my == 0)):&#10;			#calcula a distancia entre meu ponto e o ponto que quero ir&#10;			hip = math.hypot (x - mx, y - my)&#10;			#calcula a distancia dos dois catetos&#10;			tmp1 = math.hypot( x -mx, 0 )&#10;			tmp2 = math.hypot( 0, y -my )&#10;			#seleciona o maior cateto&#10;			cat = max ([tmp1, tmp2])&#10;			#calcula o angulo que preciso estar para&#10;			anguloEsperado = self.degrees(math.cos(float(cat)/hip))&#10;			deltax = x - mx&#10;			deltay = y - my&#10;			deltax = abs(deltax)&#10;			deltay = abs(deltay)&#10;			if (deltax&lt;0.19) and y &gt; my:&#10;			        anguloEsperado = 90&#10;			elif (deltax&lt;0.19) and y &lt; my:&#10;			        anguloEsperado = 270&#10;			elif (deltay&lt;0.19) and mx &lt; x:&#10;			        anguloEsperado = 0&#10;			elif (deltay&lt;0.19) and mx &gt; x:&#10;			        anguloEsperado = 180&#10;			elif mx &lt; x and my &lt;=y:&#10;			        pass#anguloEsperado += 180 &#10;			elif mx &lt; x and my &gt;= y:&#10;			        anguloEsperado= anguloEsperado +270# = 180 - anguloEsperado&#10;			elif mx &gt; x and my &lt;= y:&#10;			        anguloEsperado= anguloEsperado + 90# = 360 - anguloEsperado&#10;			elif mx &gt; x and my &gt;= y:&#10;			        anguloEsperado =anguloEsperado + 180# anguloEsperado&#10;			a = max ([anguloEsperado, mz])&#10;			b = min ([anguloEsperado , mz])&#10;			self.log.broadcast(ptolemy.data.StringToken(&quot;AE: &quot;+ str(anguloEsperado) + &quot; MA: &quot;+ str(mz)))&#10;			limin = 9&#10;			if ((a - b) &lt; limin or ((a-b)&gt;(360-limin))):&#10;			        return True , anguloEsperado, mz&#10;			return False, anguloEsperado, mz&#10;		return False, 1000, 800&#10;&#10;&#10;	def inPosition(self):&#10;		x, y = self.whereImGoing()&#10;		mx, my, mz = self.myPosition()&#10;		if ((math.hypot(x-mx, y-my))&lt; 0.3):&#10;		        return True&#10;		return False&#10;&#10;&#10;	def walk (self):&#10;		x, y = self.whereImGoing()&#10;		mx, my, mz = self.myPosition()&#10;		myId= str (self.mId)&#10;		if (myId == &quot;0&quot;): # Im the leader&#10;			self.log.broadcast(ptolemy.data.StringToken(&quot;Em frente&quot;))&#10;			return walkon()&#10;		else:&#10;		        if (not self.inPosition()):&#10;		                orient, ang, mz = self.isOriented()&#10;		                if (orient):&#10;					self.log.broadcast(ptolemy.data.StringToken(&quot;em frente &quot;))&#10;		                        return self.walkon()&#10;		                if ((ang - mz) &gt; 0):&#10;					self.log.broadcast(ptolemy.data.StringToken(&quot;antihorario&quot;))&#10;					if ((ang- mz) &lt; 180):&#10;						return self.walkantihorario()&#10;					else: &#10;						return self.walkhorario()&#10;				elif((ang- mz) &lt; 0):&#10;					if (abs((ang- mz)) &lt; 180):&#10;						return self.walkhorario()&#10;					else: &#10;						return self.walkantihorario()&#10;				else:&#10;					self.log.broadcast(ptolemy.data.StringToken(&quot;Deu aguia&quot;))&#10;		        else:&#10;				self.log.broadcast(ptolemy.data.StringToken(&quot;em posicao &quot;))&#10;				return 0, 0&#10;&#10;&#10;#		                if ((ang - mz) &gt; 0):# and (ang-mz) &lt; 180):&#10;#					self.log.broadcast(ptolemy.data.StringToken(&quot;antihorario&quot;))&#10;#					return self.walkantihorario()&#10;#		                else:&#10;#					#self.log.broadcast(ptolemy.data.StringToken(&quot;horario &quot;))&#10;#					return self.walkhorario()&#10;&#10;&#10;&#10;&#10;&#10;	def whereImGoing(self):&#10;		lx= float(self.lex)&#10;		ly= float (self.ley)&#10;		lz= float(self.lez)&#10;		myId = self.mId&#10;		distance = 2&#10;		if (myId == &quot;0&quot;): # Im the leader&#10;			return (0, 0)&#10;		elif (myId == &quot;1&quot;):&#10;			return lx -distance , ly - distance&#10;		elif (myId == &quot;2&quot;):&#10;			return lx + distance , ly  + distance&#10;		return 0, 0&#10;&#10;	def graus(self, value):&#10;		return (value*180.0) /math.pi&#10;&#10;	def fire(self) :&#10;		#self.output.broadcast(&quot;fala negada&quot;)&#10;		self.mId = str(self.myId.get(0).stringValue())&#10;		#leader position&#10;		self.lex  = self.lx.get(0).stringValue()&#10;		self.ley  = self.ly.get(0).stringValue()&#10;		self.lez = self.lz.get(0).stringValue()&#10;		#my position&#10;		self.mmx  = self.mx.get(0).doubleValue()&#10;		self.mmy  = self.my.get(0).doubleValue()&#10;		self.mmz  = self.mz.get(0).doubleValue()&#10;		linear, angular = self.walk()&#10;		self.linear.broadcast(ptolemy.data.DoubleToken(linear))&#10;		self.angular.broadcast(ptolemy.data.DoubleToken(angular))&#10;		return">
+        <property name="script" class="ptolemy.kernel.util.StringAttribute" value="import ptolemy.data&#10;import math&#10;&#10;&#10;&#10;class Main :&#10;	def __init__ (self):&#10;		self.lex= 0&#10;		self.ley= 0&#10;		self.lez= 0&#10;		self.mId= 0&#10;		self.mmx=0&#10;		self.mmy=0&#10;		self.mmz=0&#10;		self.pontos= [ [10,10],  [10,-10], [-10,-10], [-10,10] ]&#10;		self.contadorPosicao = 0&#10;	&#10;	def whereImGoing(self):&#10;		lx= float (self.lex)&#10;		ly= float (self.ley)&#10;		lz= float (self.lez)&#10;		myId= str (self.mId)&#10;&#10;		if (myId == &quot;0&quot;): # Im the leader&#10;			return pontos[contadorPosicao][0], pontos[contadorPosicao][1]&#10;		elif (myId == &quot;1&quot;):&#10;			return lx -1 , ly-1&#10;		elif (myId == &quot;2&quot;):&#10;			return lx + 1 , ly-1&#10;		return 0, 0&#10;&#10;&#10;	def myPosition(self):&#10;		return self.mmx, self.mmy, self.mmz&#10;&#10;	def walkon(self):&#10;		return 1, 0 #linear and angular&#10;	def walkhorario(self):&#10;		return 0, -0.5 #linear and angular&#10;	def walkantihorario(self):&#10;		return 0, 0.5 #linear and angular&#10;	def walkback(self):&#10;		return -1, 0 #linear and angular&#10;&#10;	def degrees(self, value):&#10;		return ((value* 180.0)/math.pi)&#10;&#10;	def isOriented(self):&#10;		x, y = self.whereImGoing()&#10;		mx, my, mz = self.myPosition()&#10;		if (not (mx == 0 and my == 0)):&#10;			#calcula a distancia entre meu ponto e o ponto que quero ir&#10;			hip = math.hypot (x - mx, y - my)&#10;			#calcula a distancia dos dois catetos&#10;			tmp1 = math.hypot( x -mx, 0 )&#10;			tmp2 = math.hypot( 0, y -my )&#10;			#seleciona o maior cateto&#10;			cat = max ([tmp1, tmp2])&#10;			#calcula o angulo que preciso estar para&#10;			anguloEsperado = self.degrees(math.cos(float(cat)/hip))&#10;			deltax = x - mx&#10;			deltay = y - my&#10;			deltax = abs(deltax)&#10;			deltay = abs(deltay)&#10;			if (deltax&lt;0.19) and y &gt; my:&#10;			        anguloEsperado = 90&#10;			elif (deltax&lt;0.19) and y &lt; my:&#10;			        anguloEsperado = 270&#10;			elif (deltay&lt;0.19) and mx &lt; x:&#10;			        anguloEsperado = 0&#10;			elif (deltay&lt;0.19) and mx &gt; x:&#10;			        anguloEsperado = 180&#10;			elif mx &lt; x and my &lt;=y:&#10;			        pass#anguloEsperado += 180 &#10;			elif mx &lt; x and my &gt;= y:&#10;			        anguloEsperado= anguloEsperado +270# = 180 - anguloEsperado&#10;			elif mx &gt; x and my &lt;= y:&#10;			        anguloEsperado= anguloEsperado + 90# = 360 - anguloEsperado&#10;			elif mx &gt; x and my &gt;= y:&#10;			        anguloEsperado =anguloEsperado + 180# anguloEsperado&#10;			a = max ([anguloEsperado, mz])&#10;			b = min ([anguloEsperado , mz])&#10;			self.log.broadcast(ptolemy.data.StringToken(&quot;AE: &quot;+ str(anguloEsperado) + &quot; MA: &quot;+ str(mz)))&#10;			limin = 3&#10;			if ((a - b) &lt; limin or ((a-b)&gt;(360-limin))):&#10;			        return True , anguloEsperado, mz&#10;			return False, anguloEsperado, mz&#10;		return False, 1000, 800&#10;&#10;&#10;	def inPosition(self):&#10;		x, y = self.whereImGoing()&#10;		mx, my, mz = self.myPosition()&#10;		if ((math.hypot(x-mx, y-my))&lt; 0.3):&#10;			self.contadorPosicao = (self.contadorPosicao + 1)%len(self.pontos)&#10;		        return True&#10;		return False&#10;&#10;&#10;	def walk (self):&#10;		x, y = self.whereImGoing()&#10;		self.log.broadcast(ptolemy.data.StringToken(&quot;Im Going to -  X: &quot;+ str(x) + &quot; Y: &quot;+ str(y)))&#10;		mx, my, mz = self.myPosition()&#10;		myId= str (self.mId)&#10;#		if (myId == &quot;0&quot;): # Im the leader&#10;			#self.log.broadcast(ptolemy.data.StringToken(&quot;Em frente&quot;))&#10;#			return self.walkon()&#10;#		else:&#10;	        if (not self.inPosition()):&#10;	                orient, ang, mz = self.isOriented()&#10;	                if (orient):&#10;				self.log.broadcast(ptolemy.data.StringToken(&quot;em frente &quot;))&#10;	                        return self.walkon()&#10;	                if ((ang - mz) &gt; 0):&#10;				self.log.broadcast(ptolemy.data.StringToken(&quot;antihorario&quot;))&#10;				if ((ang- mz) &lt; 180):&#10;					return self.walkantihorario()&#10;				else: &#10;					return self.walkhorario()&#10;			elif((ang- mz) &lt; 0):&#10;				if (abs((ang- mz)) &lt; 180):&#10;					return self.walkhorario()&#10;				else: &#10;					return self.walkantihorario()&#10;			else:&#10;				self.log.broadcast(ptolemy.data.StringToken(&quot;Deu aguia&quot;))&#10;	        else:&#10;			self.log.broadcast(ptolemy.data.StringToken(&quot;em posicao &quot;))&#10;			return 0, 0&#10;&#10;&#10;#		                if ((ang - mz) &gt; 0):# and (ang-mz) &lt; 180):&#10;#					self.log.broadcast(ptolemy.data.StringToken(&quot;antihorario&quot;))&#10;#					return self.walkantihorario()&#10;#		                else:&#10;#					#self.log.broadcast(ptolemy.data.StringToken(&quot;horario &quot;))&#10;#					return self.walkhorario()&#10;&#10;&#10;&#10;&#10;&#10;	def whereImGoing(self):&#10;		lx= float(self.lex)&#10;		ly= float (self.ley)&#10;		lz= float(self.lez)&#10;		myId = self.mId&#10;		distance = 2&#10;		if (myId == &quot;0&quot;): # Im the leader&#10;			return self.pontos[self.contadorPosicao][0], self.pontos[self.contadorPosicao][1]&#10;		elif (myId == &quot;1&quot;):&#10;			return lx -distance , ly - distance&#10;		elif (myId == &quot;2&quot;):&#10;			return lx + distance , ly  - distance&#10;		return 0, 0&#10;&#10;	def graus(self, value):&#10;		return (value*180.0) /math.pi&#10;&#10;	def fire(self) :&#10;		#self.output.broadcast(&quot;fala negada&quot;)&#10;		self.mId = str(self.myId.get(0).stringValue())&#10;		#leader position&#10;		self.lex  = self.lx.get(0).stringValue()&#10;		self.ley  = self.ly.get(0).stringValue()&#10;		self.lez = self.lz.get(0).stringValue()&#10;		#my position&#10;		self.mmx  = self.mx.get(0).doubleValue()&#10;		self.mmy  = self.my.get(0).doubleValue()&#10;		self.mmz  = self.mz.get(0).doubleValue()&#10;		linear, angular = self.walk()&#10;		self.linear.broadcast(ptolemy.data.DoubleToken(linear))&#10;		self.angular.broadcast(ptolemy.data.DoubleToken(angular))&#10;		return">
             <property name="style" class="ptolemy.actor.gui.style.TextStyle">
                 <property name="height" class="ptolemy.data.expr.Parameter" value="10">
                 </property>
@@ -168,7 +168,7 @@
         </property>
     </entity>
     <entity name="SlaveFederateActor" class="ptolemy.myactors.hlabbb.SlaveFederateActor">
-<display name="HLA BBB "/>        <property name="robot id" class="ptolemy.data.expr.StringParameter" value="1">
+<display name="HLA BBB "/>        <property name="robot id" class="ptolemy.data.expr.StringParameter" value="0">
         </property>
         <doc>HLA Actor.</doc>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-445.0, 130.0]">
@@ -391,7 +391,7 @@
         </property>
     </entity>
     <entity name="Const" class="ptolemy.actor.lib.Const">
-        <property name="value" class="ptolemy.data.expr.Parameter" value="&quot;1&quot;">
+        <property name="value" class="ptolemy.data.expr.Parameter" value="&quot;0&quot;">
         </property>
         <doc>Create a constant sequence.</doc>
         <property name="_icon" class="ptolemy.vergil.icon.BoxedValueIcon">
@@ -401,6 +401,10 @@
             </property>
         </property>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-570.0, 80.0]">
+        </property>
+    </entity>
+    <entity name="TimedDelay2" class="ptolemy.domains.de.lib.TimedDelay">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-560.0, 390.0]">
         </property>
     </entity>
     <relation name="relation7" class="ptolemy.actor.TypedIORelation">
@@ -424,7 +428,7 @@
     <relation name="relation9" class="ptolemy.actor.TypedIORelation">
         <property name="width" class="ptolemy.data.expr.Parameter" value="1">
         </property>
-        <vertex name="vertex1" value="[-50.0, 250.0]">
+        <vertex name="vertex1" value="[-45.0, 250.0]">
         </vertex>
     </relation>
     <relation name="relation8" class="ptolemy.actor.TypedIORelation">
@@ -465,6 +469,14 @@
         <property name="width" class="ptolemy.data.expr.Parameter" value="1">
         </property>
     </relation>
+    <relation name="relation6" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation13" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
     <link port="PythonActor.mx" relation="relation15"/>
     <link port="PythonActor.my" relation="relation16"/>
     <link port="PythonActor.mz" relation="relation17"/>
@@ -483,8 +495,10 @@
     <link port="SlaveFederateActor.position" relation="relation15"/>
     <link port="SlaveFederateActor.position" relation="relation16"/>
     <link port="SlaveFederateActor.position" relation="relation17"/>
+    <link port="SlaveFederateActor.rotate" relation="relation13"/>
     <link port="SlaveFederateActor.inid" relation="relation4"/>
     <link port="SlaveFederateActor.inGoto" relation="relation8"/>
+    <link port="SlaveFederateActor.inActivate" relation="relation6"/>
     <link port="PythonActor2.linear" relation="relation"/>
     <link port="PythonActor2.angular" relation="relation2"/>
     <link port="PythonActor2.output" relation="relation9"/>
@@ -492,4 +506,6 @@
     <link port="TimedDelay.output" relation="relation8"/>
     <link port="Const.output" relation="relation4"/>
     <link port="Const.trigger" relation="relation7"/>
+    <link port="TimedDelay2.input" relation="relation13"/>
+    <link port="TimedDelay2.output" relation="relation6"/>
 </entity>
